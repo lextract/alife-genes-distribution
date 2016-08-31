@@ -3,9 +3,13 @@ var SquareDistrib = (function () {
     function SquareDistrib(containderId) {
         this.lastXcoord = 0.5;
         this.lastYcoord = 0.5;
+        this.color = '#555';
         this.svg = d3.select("#" + containderId).append("svg")
-            .attr("width", '100%').attr("height", 300);
+            .attr("width", '100%').attr("height", 500);
     }
+    SquareDistrib.prototype.setColor = function (colorHex) {
+        this.color = colorHex;
+    };
     SquareDistrib.prototype.setInitialPoint = function (xCoord, yCoord) {
         this.lastXcoord = xCoord;
         this.lastYcoord = yCoord;
@@ -56,7 +60,8 @@ var SquareDistrib = (function () {
         this.svg.append('circle')
             .attr('cx', (this.lastXcoord * 100) + '%')
             .attr('cy', (this.lastYcoord * 100) + '%')
-            .attr('class', cssClass);
+            .attr('r', 1).attr('fill', this.color)
+            //.attr('class', cssClass);
     };
     return SquareDistrib;
 }());

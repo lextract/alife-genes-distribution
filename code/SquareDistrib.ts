@@ -3,9 +3,14 @@ class SquareDistrib {
     svg: any;
     lastXcoord = 0.5;
     lastYcoord = 0.5;
+    color: string = '#555';
     constructor(containderId: string) {
         this.svg = d3.select("#" + containderId).append("svg")
-            .attr("width", '100%').attr("height", 300);
+            .attr("width", '100%').attr("height", 500);
+    }
+
+    setColor(colorHex: string){
+        this.color = colorHex;
     }
 
     setInitialPoint(xCoord:number, yCoord: number){
@@ -62,6 +67,7 @@ class SquareDistrib {
         this.svg.append('circle')
         .attr('cx', (this.lastXcoord * 100) +  '%')
         .attr('cy', (this.lastYcoord * 100) + '%')
-        .attr('class',cssClass)
+        .attr('r', 1).attr('fill',this.color)
+        //.attr('class',cssClass)
     }
 }

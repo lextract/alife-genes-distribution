@@ -5,10 +5,10 @@
 	<style>
 		body { margin: 0; }
 		input[type=number]{ width: 50px; }
-		.nucleotideA{ r: 4px; fill: #087; }
-		.nucleotideC{ r: 4px; fill: #0c0; }
-		.nucleotideG{ r: 4px; fill: #00b; }
-		.nucleotideT{ r: 4px; fill: #b00; }
+		.nucleotideA{ r: 1px; fill: #087; }
+		.nucleotideC{ r: 1px; fill: #0c0; }
+		.nucleotideG{ r: 1px; fill: #00b; }
+		.nucleotideT{ r: 1px; fill: #b00; }
 		.visualizer{ margin: 10px 0; }
 		.float-area{ background-color:#eee; position:relative; }
 		.float-area:after {content:""; display:table; clear:both; }
@@ -17,7 +17,6 @@
 		.float-area>*:last-child{float:right;}
 	</style>
 </head>
-
 <body>
 	<script src="node_modules/d3/build/d3.js"></script>
 	<script src="code/SquareDistrib.js"></script>
@@ -30,7 +29,12 @@
 		<select id="dnaSequencesSelect">
 			<option value="/dna-sequences/random1.txt">Random 1</option>
 			<option value="/dna-sequences/Streptococcus-2783.txt">Streptococcus-2783</option>
+			<option value="/dna-sequences/DNMT_Dr.txt">DNMT_Dr</option>
+			<option value="/dna-sequences/DNMT_Mamu.txt">DNMT_Mamu</option>
+			<option value="/dna-sequences/DNMT_Hs.txt">DNMT_Hs</option>
+			<option value="/dna-sequences/DNMT_Mm.txt">DNMT_Mm</option>
 		</select>
+		<input type="text" id="colorText" value="#000">
 		<button type="button" onclick="Page.processDnaClick()">Generar</button>
 		<button type="button" onclick="Page.clearClick()">Limpiar</button>
 	</div>
@@ -50,6 +54,8 @@
 		let Page = {
 			processDnaClick: function(){
 				let dnaUrl = document.getElementById("dnaSequencesSelect").value;
+				let colorHex = document.getElementById("colorText").value;
+				squareDist.setColor(colorHex);
 				squareDist.processFromUrl(dnaUrl);
 			},
 			clearClick: function(){
