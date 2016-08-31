@@ -6,6 +6,22 @@ var SquareDistrib = (function () {
         this.svg = d3.select("#" + containderId).append("svg")
             .attr("width", '100%').attr("height", 300);
     }
+    SquareDistrib.prototype.setInitialPoint = function (xCoord, yCoord) {
+        this.lastXcoord = xCoord;
+        this.lastYcoord = yCoord;
+    };
+    SquareDistrib.prototype.processFromUrl = function (dnaUrl) {
+        var _this = this;
+        d3.text(dnaUrl, function (error, text) {
+            if (error)
+                console.log(error);
+            else
+                _this.processDnaSequence(text);
+        });
+    };
+    SquareDistrib.prototype.clearArea = function () {
+        this.svg.selectAll('*').remove();
+    };
     SquareDistrib.prototype.processDnaSequence = function (dnaSequence) {
         for (var i = 0; i < dnaSequence.length; i++) {
             this.addNucleotide(dnaSequence[i]);

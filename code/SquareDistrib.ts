@@ -8,6 +8,22 @@ class SquareDistrib {
             .attr("width", '100%').attr("height", 300);
     }
 
+    setInitialPoint(xCoord:number, yCoord: number){
+        this.lastXcoord = xCoord;
+        this.lastYcoord = yCoord;
+    }
+
+    processFromUrl(dnaUrl: string){
+        d3.text(dnaUrl, (error, text) => {
+            if (error) console.log(error);
+            else this.processDnaSequence(text);
+        });
+    }
+
+    clearArea(){
+        this.svg.selectAll('*').remove();
+    }
+
     processDnaSequence(dnaSequence: string) {
         for (var i = 0; i < dnaSequence.length; i++) {
             this.addNucleotide(dnaSequence[i]);
