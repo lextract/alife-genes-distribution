@@ -1,0 +1,28 @@
+{
+  "name": "genes-distribution",
+  "version": "1.0.0",
+  "description": "genes distribution",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lextract/alife-genes-distribution.git"
+  },
+  "keywords": [
+    "genes",
+    "distribution",
+    "alife"
+  ],
+  "author": "John A. Antonio R. (jaantonior@unal.edu.co)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lextract/alife-genes-distribution/issues"
+  },
+  "homepage": "https://github.com/lextract/alife-genes-distribution#readme",
+  "dependencies": {
+    "d3": "^4.2.2",
+    "express": "^4.14.0"
+  }
+}

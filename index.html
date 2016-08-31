@@ -1,0 +1,37 @@
+<html>
+
+<head>
+	<title>Genes Distribution</title>
+	<style>
+		body { margin: 0; }
+		input[type=text]{ width: 600px; }
+		.nucleotideA{ r: 4px; fill: #b00; }
+		.nucleotideC{ r: 4px; fill: #0c0; }
+		.nucleotideG{ r: 4px; fill: #00b; }
+		.nucleotideT{ r: 4px; fill: #70c; }
+	</style>
+
+</head>
+
+<body>
+	<script src="node_modules/d3/build/d3.js"></script>
+	<script src="code/SquareDistrib.js"></script>
+	<input id="dnaSequenceText" type="text" value="CGCCAGATGCTGCCTTATCGTGTGGTCTGTTGTGAGTGTAGTTGCGTATTTCAGTGTCGAAGTTTGTAAGTTTAAATTGTTTAATCTGCGCAGCAGAACG">
+	<button type="button" onclick="Page.processDnaClick()">Generar</button>
+	<div id="container"></div>
+	
+	<script>
+		let squareDist;
+		let Page = {
+			processDnaClick: function(){
+				let dnaText = document.getElementById('dnaSequenceText').value;
+				squareDist.processDnaSequence(dnaText);
+			}
+		}
+		window.onload = function(){
+			squareDist = new SquareDistrib("container");
+		}
+	</script>
+</body>
+
+</html>
